@@ -17,7 +17,7 @@ public class MapsController : ControllerBase
     public async Task<ActionResult<string>> GetDirections(string origin, string destination)
     {
         var client = new HttpClient();
-        var response = await client.GetAsync($"https://maps.googleapis.com/maps/api/directions/json?origin={origin}&destination={destination}&key=AIzaSyBO9WcJtwPuOrnzgvy-2qmGy_7RbFhgcAw");
+        var response = await client.GetAsync($"https://maps.googleapis.com/maps/api/directions/json?origin={origin}&destination={destination}&key=AppKey");
         var content = await response.Content.ReadAsStringAsync();
         return content;
     }
