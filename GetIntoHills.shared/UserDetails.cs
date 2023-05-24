@@ -14,7 +14,7 @@ namespace GetIntoHills.shared
 
         public string password { get; set; }
 
-        // To do - Add encryption/decryption method to secure password.
+        // To do - Add encryption/decryption method to secure passwords.
         public bool IsDriver { get; set; }
 
     }
