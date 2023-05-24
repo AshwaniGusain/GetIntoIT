@@ -1,0 +1,164 @@
+﻿@page "/DriverVehicleRegistration"
+@using GetIntoHills.Data
+@using GetIntoHills.shared
+
+<h1>Driver and Vechile Registration</h1>
+
+<p>Driver can register here with Vechicle details</p>
+
+
+<form id="form1"disabled="@IsDisabled" @onsubmit="HandleRegistrationSubmit">
+    <div class="form-group">
+        <label for="username">User Name:</label>
+        <input type="text" class="form-control" id="username" @bind-value="userdetail.UserName">
+    </div>
+    <div class="form-group">
+        <label for="mobile">Mobile Number:</label>
+        <input type="text" class="form-control" id="mobile" @bind-value="userdetail.Mobile_number">
+    </div>
+    <div class="form-group">
+        <label for="email">Email Address:</label>
+        <input type="email" class="form-control" id="email" @bind-value="userdetail.email_address">
+    </div>
+    <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" class="form-control" id="password" @bind-value="userdetail.password">
+    </div>
+    <div class="form-group">
+        <label for="IsDriver">Are you a Driver ? </label>
+        <input name="IsDriver" type="checkbox" class="form-control" id="IsDriver" @bind-value="userdetail.IsDriver">
+    </div>
+    <button type="submit" class="btn btn-primary">Register</button>
+</form>
+
+@if(registrationSuccess && userdetail.IsDriver)
+{
+    IsDisabled = true;
+    driverdetail.UserId = userdetail.Id;
+    vehicledetail.DriverId = driverdetail.Id;
+    <form id="form2" @onsubmit="HandleVehicleRegistrationSubmit">
+    <div class="form-group">
+        <label for="DriverId">DriverId</label>
+        <input type="text" class="form-control" id="DriverId" @bind-value="driverdetail.UserId">
+    </div>
+    <div class="form-group">
+        <label for="lcnumber">License number</label>
+        <input type="text" class="form-control" id="lcnumber" @bind-value="driverdetail.licenseNumber">
+    </div>
+    <div class="form-group">
+        <label for="rcnumber">Vehicle Registration number:</label>
+        <input type="text" class="form-control" id="rcnumber" @bind-value="vehicledetail.vehicleNumber">
+    </div>
+    <div class="form-group">
+        <label for="type">Vehicle Type</label>
+        <select @bind="selectedOption">
+            @foreach (var item in theList)
+            {
+                <option>@item</option>
+            }
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Register</button>
+</form>
+    
+}
+
+@code {
+    private string searchString = "";
+    string selectedOption;
+    private bool registrationSuccess = false;
+    protected bool IsDisabled { get; set; }
+    private UserDetails userdetail = new UserDetails();
+    private VehicleDetails vehicledetail = new VehicleDetails();
+    private DriverDetails driverdetail = new DriverDetails();
+    private List<UserDetails> userdetails = new List<UserDetails>();
+    private List<VehicleDetails> vehicledetails = new List<VehicleDetails>();
+    private List<DriverDetails> driverdetails = new List<DriverDetails>();
+    private List<vehicleType> vehicleTypes = new List<vehicleType>();
+    List<vehicleType> theList = Enum.GetValues(typeof(vehicleType)).Cast<vehicleType>().ToList();
+
+    protected override async Task OnInitializedAsync()
+    {
+
+    }
+    private async Task HandleRegistrationSubmit()
+    {
+        // Your registration logic goes here
+        // For example, you could call an API to register the user
+        Add(userdetail);
+        registrationSuccess = true;
+        IsDisabled = true;
+    }
+
+    private async Task HandleVehicleRegistrationSubmit()
+    {
+        // Your registration logic goes here
+        // For example, you could call an API to register the user
+        Add(vehicledetail,driverdetail);
+        registrationSuccess = true;
+    }
+
+    private bool Search(UserDetails userdetail)
+    {
+        if (string.IsNullOrWhiteSpace(searchString)) return true;
+        if (userdetail.UserName.Contains(searchString, StringComparison.OrdinalIgnoreCase))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    private List<UserDetails> GetAll()
+    {
+        userdetails = userdetailsservice.GetAll();
+        return userdetails;
+    }
+
+    private void Add(UserDetails userdetail)
+    {
+        if (userdetail.Id == 0)
+        {
+            userdetailsservice.Add(userdetail);
+        }
+        else
+        {
+            userdetailsservice.Update(userdetail);
+        }
+        userdetail = new UserDetails();
+        //snackBar.Add("Employee Added.", Severity.Success);
+        //GetAll();
+    }
+
+    private void Add(VehicleDetails vehicledetails, DriverDetails driverdetails)
+    {
+        if (vehicledetails.Id == 0)
+        {
+            vehicledetailsservice.Add(vehicledetail);
+            driverdetailsservice.Add(driverdetails);
+        }
+        else
+        {
+            userdetailsservice.Update(userdetail);
+        }
+        userdetail = new UserDetails();
+        //snackBar.Add("Employee Added.", Severity.Success);
+        //GetAll();
+    }
+
+    private void Update(UserDetails record)
+    {
+        userdetail = record;
+        StateHasChanged();
+    }
+
+    private async Task Delete(UserDetails record)
+    {
+        //bool confirmed = await JsRuntime.InvokeAsync<bool>("confirm", "Are you sure?");
+        //if (confirmed)
+        //{
+        userdetailsservice.Delete(record);
+        //snackBar.Add("Employee Deleted.", Severity.Success);
+        GetAll();
+        //}
+    }
+}

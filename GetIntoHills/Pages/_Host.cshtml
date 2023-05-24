@@ -1,0 +1,48 @@
+﻿@page "/"
+@namespace GetIntoHills.Pages
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GetIntoHills</title>
+    <base href="~/" />
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
+    <link href="css/site.css" rel="stylesheet" />
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <script src="https://kit.fontawesome.com/ab2155e76b.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBO9WcJtwPuOrnzgvy-2qmGy_7RbFhgcAw&v=3"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBO9WcJtwPuOrnzgvy-2qmGy_7RbFhgcAw&libraries=places"></script>
+    <link href="/App.css" rel="stylesheet" />
+    <script src="~/js/location.js"></script>
+</head>
+<body>
+    <app>
+        <component type="typeof(App)" render-mode="ServerPrerendered" />
+    </app>
+
+    <div id="blazor-error-ui">
+        <environment include="Staging,Production">
+            An error has occurred. This application may no longer respond until reloaded.
+        </environment>
+        <environment include="Development">
+            An unhandled exception has occurred. See browser dev tools for details.
+        </environment>
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="Scripts/jquery-3.1.1.min.js"></script>
+    <script src="_framework/blazor.server.js"></script>
+
+</body>
+</html>

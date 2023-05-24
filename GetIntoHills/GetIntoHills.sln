@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33214.272
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GetIntoHills", "GetIntoHills.csproj", "{1BDB58DA-C8A3-43A9-AA1C-108F3F91DD1B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GetIntoHills.shared", "..\GetIntoHills.shared\GetIntoHills.shared.csproj", "{E9141293-353E-43DF-9ADF-4401268D2D54}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1BDB58DA-C8A3-43A9-AA1C-108F3F91DD1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BDB58DA-C8A3-43A9-AA1C-108F3F91DD1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BDB58DA-C8A3-43A9-AA1C-108F3F91DD1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BDB58DA-C8A3-43A9-AA1C-108F3F91DD1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9141293-353E-43DF-9ADF-4401268D2D54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9141293-353E-43DF-9ADF-4401268D2D54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9141293-353E-43DF-9ADF-4401268D2D54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9141293-353E-43DF-9ADF-4401268D2D54}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2D4D9844-E52D-4EA3-A182-312C6CA126E4}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,37 @@
+﻿@page "/Directions"
+
+
+<div>
+    <InputText @bind-Value="@Origin" placeholder="Enter origin" />
+    <InputText @bind-Value="@Destination" placeholder="Enter destination" />
+    <button class="btn btn-primary" @onclick="GetDirections">Get Directions</button>
+</div>
+
+@if (!string.IsNullOrEmpty(Directionss))
+{
+<div>Directionss</div>
+}
+
+@code {
+    private string Origin { get; set; }
+    private string Destination { get; set; }
+    private string Directionss { get; set; }
+
+    private async Task GetDirections()
+    {
+        HttpClient client = new HttpClient();
+        //var response = await client.GetStringAsync($"api/maps/directions?origin={Origin}&destination={Destination}");
+        //var response = await client.GetFromJsonAsync<string>($"api/maps/directions?origin={Origin}&destination={Destination}");
+
+        //if (response != null)
+        //{
+        //    Directionss = response;
+        //}
+
+        var response = await client.GetAsync($"api/directions?origin={Uri.EscapeDataString(Origin)}&destination={Uri.EscapeDataString(Destination)}");
+        if (response.IsSuccessStatusCode)
+        {
+            Directionss = await response.Content.ReadAsStringAsync();
+        }
+    }
+}

@@ -1,0 +1,49 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>aspnet-GetIntoHills-BBE23608-554C-4B76-A37B-CE3610C5F31E</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Data\Migrations\20230330095856_Init.cs" />
+    <Compile Remove="Data\Migrations\20230330095856_Init.Designer.cs" />
+    <Compile Remove="Data\Migrations\20230404040510_init.cs" />
+    <Compile Remove="Data\Migrations\20230404040510_init.Designer.cs" />
+    <Compile Remove="Data\Migrations\20230410142411_init.cs" />
+    <Compile Remove="Data\Migrations\20230410142411_init.Designer.cs" />
+    <Compile Remove="Data\Migrations\20230410142456_init.cs" />
+    <Compile Remove="Data\Migrations\20230410142456_init.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BlazorGoogleMaps" Version="3.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.32" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.32" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.32" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.32" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.32" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+    <PackageReference Include="MSBuild.Npm" Version="0.5.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Node.js" Version="5.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Content\bootstrap-theme.css.map" />
+    <None Include="wwwroot\Content\bootstrap-theme.min.css.map" />
+    <None Include="wwwroot\Content\bootstrap.css.map" />
+    <None Include="wwwroot\Content\bootstrap.min.css.map" />
+    <None Include="wwwroot\fonts\glyphicons-halflings-regular.svg" />
+    <None Include="wwwroot\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="wwwroot\index.html" />
+    <None Include="wwwroot\Main.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GetIntoHills.shared\GetIntoHills.shared.csproj" />
+  </ItemGroup>
+
+</Project>
